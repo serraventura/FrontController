@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Interface.IAction;
+import Model.View;
+
 /**
  * Servlet implementation class FrontController
  */
@@ -31,14 +34,14 @@ public class FrontController extends HttpServlet {
     	try {
 			
     		ActionFactory af = new ActionFactory();
-    		Action action = af.create(request);
-    		String view = action.execute(request, response);
+    		IAction action = af.create(request);
+    		View view = action.execute(request, response);
     		
-            rd = request.getRequestDispatcher(view);
+            rd = request.getRequestDispatcher(view.getPage());
             rd.forward(request, response);
     		
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println("Error: "+e.getMessage());
 		}
     	
     	
