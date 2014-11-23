@@ -40,11 +40,19 @@ public class FrontController extends HttpServlet {
             rd = request.getRequestDispatcher(view.getPage());
             rd.forward(request, response);
     		
-		} catch (Exception e) {
+		} 
+
+        catch(ClassNotFoundException e){
+            rd = request.getRequestDispatcher("errorNotFound.html");
+            rd.forward(request, response);
+        }
+    	
+    	catch (Exception e) {
 			System.out.println("Error: "+e.getMessage());
+            rd = request.getRequestDispatcher("error.html");
+            rd.forward(request, response);
 		}
-    	
-    	
+
     }
     
 	/**
