@@ -12,23 +12,20 @@ import javax.servlet.http.HttpServletResponse;
 import Interface.IAction;
 import Model.View;
 
-/**
- * Servlet implementation class FrontController
- */
 @WebServlet("/FrontController")
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public FrontController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	
+
+    }
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+
     	RequestDispatcher rd;
     	
     	try {
@@ -43,30 +40,30 @@ public class FrontController extends HttpServlet {
 		} 
 
         catch(ClassNotFoundException e){
-            rd = request.getRequestDispatcher("errorNotFound.html");
+            rd = request.getRequestDispatcher("/errorNotFound.html");
             rd.forward(request, response);
         }
     	
     	catch (Exception e) {
 			System.out.println("Error: "+e.getMessage());
-            rd = request.getRequestDispatcher("error.html");
+            rd = request.getRequestDispatcher("/error.html");
             rd.forward(request, response);
 		}
 
-    }
-    
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		this.processRequest(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		this.processRequest(request, response);
+		//this.processRequest(request, response);
+	}
+	
+	@Override
+	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		super.doPut(req, resp);
+	}
+	
+	@Override
+	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		super.doDelete(req, resp);
 	}
 
 }

@@ -9,7 +9,7 @@ public class View {
 	}
 
 	public void setPage(String page) {
-		this.page = page;
+		this.page = "/"+page;
 	}
 	
 }

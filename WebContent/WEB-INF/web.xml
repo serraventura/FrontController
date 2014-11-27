@@ -11,7 +11,7 @@
     
     <servlet-mapping>
         <servlet-name>FrontController</servlet-name>
-        <url-pattern>/FrontController</url-pattern>
+        <url-pattern>/app/*</url-pattern>
     </servlet-mapping>
     
     <session-config>
